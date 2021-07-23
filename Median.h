@@ -3,6 +3,6 @@
 
 #include<vector>
 
-double median(std::vector<double> vec, int size);
+double median(std::vector<double> vec);
 
 #endif

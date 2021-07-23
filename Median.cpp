@@ -5,29 +5,27 @@
 #include <algorithm>
 
 
-double median(std::vector<double> vec, int size)
+double median(std::vector<double> vec)
 {
     
-  std::sort(vec.begin(), vec.end());
-
-  double median;
-
+  auto size = vec.size();
   if (size % 2 != 0)
-     median = static_cast<double> (vec[size / 2]);
+     return(static_cast<double> (vec[size / 2]));
   else
-     median = static_cast<double>((vec[(size - 1) / 2] + vec[size / 2]) / 2.0);
-
- //  std::cout << "Median is = " << median ;
-
-
-  return median;
+     return(static_cast<double>((vec[(size - 1) / 2] + vec[size / 2]) / 2.0));
   
 }
 
-
 int main(int argc, char * argv[])
 {
-    std::fstream myfile("sample.txt", std::ios_base::in);
+    std::fstream myfile(argv[1], std::ios_base::in);
+    
+    if( !myfile ) 
+    {
+        std::cout << "Error opening input file \n ";
+        exit(1) ;
+    }
+
     std::vector<double> values{};
     double input;
     while (myfile >> input)
@@ -50,14 +48,12 @@ int main(int argc, char * argv[])
 
     std::cout << '\n';
   
- 
-    int size = values.size();
-
     // Find the median
-    auto medianValue = median(values,size);
+    auto medianValue = median(values);
    
     std::cout << "Median is " << medianValue << '\n' ;
 
     myfile.close();
     return 0;
 }
+
