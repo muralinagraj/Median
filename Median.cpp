@@ -1,9 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <initializer_list>  
 #include <algorithm>
-
+#include <iomanip>
 
 double median(std::vector<double> vec)
 {
@@ -33,7 +32,7 @@ int main(int argc, char * argv[])
         if((input > -70) && (input < +2.08E9))
             values.push_back(input);
         else
-            std::cout << "Error: Value is not in the specified range \n";            
+            std::cout << "Error: Value is not in the specified range \n \n";            
                 
     }
 
@@ -41,19 +40,22 @@ int main(int argc, char * argv[])
     std::sort(values.begin(), values.end());
     
     // Displaying sorted values
+    std::cout << "Sorted values in the ascending order:: \n";
     for (double i : values)
     {
         std::cout << i << ' ';
     }
 
-    std::cout << '\n';
+    std::cout << "\n \n";
   
     // Find the median
     auto medianValue = median(values);
-   
-    std::cout << "Median is " << medianValue << '\n' ;
+    
+    // Print the median value   
+    std::cout << std::fixed << std::setprecision(2) << "Median is  " << medianValue << '\n' ;
 
     myfile.close();
+
     return 0;
 }
 
