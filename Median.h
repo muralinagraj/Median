@@ -4,5 +4,5 @@
 #include<vector>
 
 double median(std::vector<double> vec);
-//Header file
+
 #endif
